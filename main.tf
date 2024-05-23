@@ -48,15 +48,17 @@ packages:
   - curl
   - software-properties-common
   - conntrack
+  - kubectl
 
 runcmd:
   - curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
   - sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu $(lsb_release -cs) stable"
   - sudo apt-get update
-  - sudo apt-get install -y kubelet kubeadm kubectl
+  - sudo apt-get install -y kubelet kubeadm
   - sudo snap install minikube --classic
 EOT
 }
+
 
 resource "azurerm_linux_virtual_machine" "example" {
   name                = "example-vm"
